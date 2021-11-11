@@ -947,6 +947,41 @@ Citizen.CreateThread(function()
 	end
 end)
 
+local tuna_interior_id    = GetInteriorAtCoords(vector3(-1350.0, 160.0, -100.0))
+local meetup_interior_id  = GetInteriorAtCoords(vector3(-2000.0, 1113.211, -25.36243))
+local methlab_interior_id = GetInteriorAtCoords(vector3(981.9999, -143.0, -50.0))
+local enteredInteriorId   = nil
+local playerPed
+local playerCoords
+
+local EntitySetsTuner = {
+    ['entity_set_bedroom']           = true,
+    ['entity_set_bedroom_empty']     = true,
+    ['entity_set_bombs']             = true,
+    ['entity_set_box_clutter']       = false,
+    ['entity_set_cabinets']          = true,
+    ['entity_set_car_lift_cutscene'] = true,
+    ['entity_set_car_lift_default']  = true,
+    ['entity_set_car_lift_purchase'] = true,
+    ['entity_set_chalkboard']        = true,
+    ['entity_set_container']         = true,
+    ['entity_set_cut_seats']         = true,
+    ['entity_set_def_table']         = true,
+    ['entity_set_drive']             = true,
+    ['entity_set_ecu']               = true,
+    ['entity_set_IAA']               = true,
+    ['entity_set_jammers']           = true,
+    ['entity_set_laptop']            = true,
+    ['entity_set_lightbox']          = true,
+    ['entity_set_methLab']           = true,
+    ['entity_set_plate']             = true,
+    ['entity_set_scope']             = true,
+    ['entity_set_table']             = true,
+    ['entity_set_thermal']           = true,
+    ['entity_set_tints']             = true,
+    ['entity_set_train']             = true,
+    ['entity_set_virus']             = true,
+}
 
 local entitySetsMeet = {
     ['entity_set_meet_crew']         = true,
