@@ -946,3 +946,70 @@ Citizen.CreateThread(function()
 	break
 	end
 end)
+
+
+local entitySetsMeet = {
+    ['entity_set_meet_crew']         = true,
+    ['entity_set_meet_lights']       = true,
+    ['entity_set_meet_lights_cheap'] = true,
+    ['entity_set_player']            = true,
+    ['entity_set_test_crew']         = true,
+    ['entity_set_test_lights']       = true,
+    ['entity_set_test_lights_cheap'] = true,
+    ['entity_set_time_trial']        = true,
+}
+
+local EntitySetMeth = {
+    ['tintable_walls'] = true,
+}
+
+-- Load base entity sets
+Citizen.CreateThread(function()
+    
+    RequestIpl('tr_tuner_meetup')
+    RequestIpl('tr_tuner_race_line')
+    RequestIpl('tr_tuner_shop_burton')
+    RequestIpl('tr_tuner_shop_mesa' )
+    RequestIpl('tr_tuner_shop_mission' )
+    RequestIpl('tr_tuner_shop_rancho')
+    RequestIpl('tr_tuner_shop_strawberry')
+    
+    if IsValidInterior(tuna_interior_id) then
+      RefreshInterior(tuna_interior_id)
+    end
+
+    if IsValidInterior(meetup_interior_id) then
+        RefreshInterior(meetup_interior_id)
+    end
+
+    if IsValidInterior(methlab_interior_id) then
+        RefreshInterior(methlab_interior_id)
+    end
+
+    for k, v in pairs(EntitySetsTuner) do
+        if v then
+            ActivateInteriorEntitySet(tuna_interior_id, k)
+        else
+            DeactivateInteriorEntitySet(tuna_interior_id, k)
+        end
+
+    end
+
+    for k, v in pairs(entitySetsMeet) do
+        if v then
+            ActivateInteriorEntitySet(meetup_interior_id, k)
+        else
+            DeactivateInteriorEntitySet(meetup_interior_id, k)
+        end
+    end
+
+    for k, v in pairs(EntitySetMeth) do
+        if v then
+            ActivateInteriorEntitySet(methlab_interior_id, k)
+        else
+            DeactivateInteriorEntitySet(methlab_interior_id, k)
+        end
+    end
+
+    SetInteriorEntitySetColor(284673, "tintable_walls", 2)
+end)
